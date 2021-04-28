@@ -8,32 +8,6 @@ class LaravelGelfLoggingServiceProvider extends ServiceProvider
 {
 
     /**
-     * Perform post-registration booting of services.
-     *
-     * @return void
-     */
-    public function boot(): void
-    {
-        // Publishing is only necessary when using the CLI.
-        if ($this->app->runningInConsole()) {
-            $this->bootForConsole();
-        }
-    }
-
-    /**
-     * Console-specific booting.
-     *
-     * @return void
-     */
-    protected function bootForConsole(): void
-    {
-        // Publishing the configuration file.
-        $this->publishes([
-            __DIR__ . '/../config/logging.php' => config_path('logging.php'),
-        ], 'logging.config');
-    }
-
-    /**
      * Register any package services.
      *
      * @return void
@@ -44,6 +18,13 @@ class LaravelGelfLoggingServiceProvider extends ServiceProvider
         $this->app->bind('laravelgelflogging', function () {
             return new LaravelGelfLogging;
         });
+        // Publishing the configuration file.
+        $config = config('logging.channels');
+        $gelfConfig = include __DIR__ . '/../config/logging.php';
+        app('config')->set('logging.channels', array_merge(
+            $config,
+            $gelfConfig['channels']
+        ));
     }
 
     /**
