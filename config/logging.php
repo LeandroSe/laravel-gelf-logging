@@ -6,6 +6,7 @@ return [
         'gelf' => [
             'driver' => 'custom',
             'via' => \Hedii\LaravelGelfLogger\GelfLoggerFactory::class,
+            'gelf' => true,
 
             // This optional option determines the processors that should be
             // pushed to the handler. This option is useful to modify a field
@@ -64,6 +65,7 @@ return [
         'gelf_requests' => [
             'driver' => 'custom',
             'via' => \Hedii\LaravelGelfLogger\GelfLoggerFactory::class,
+            'gelf' => true,
 
             // This optional option determines the processors that should be
             // pushed to the handler. This option is useful to modify a field
