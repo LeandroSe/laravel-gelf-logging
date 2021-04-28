@@ -1,0 +1,47 @@
+{
+    "name": "leandrose/laravelgelflogging",
+    "description": "Logging using Gelf for storage on a remote server. Registration of Requisition Logs and Laravel Logs.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "LeandroSe",
+            "email": "ltsujiguchi@gmail.com",
+            "homepage": "https://github.com/LeandroSe"
+        }
+    ],
+    "homepage": "https://github.com/LeandroSe/laravel-gelf-logging",
+    "keywords": [
+        "Laravel",
+        "LaravelGelfLogging",
+        "Gelf"
+    ],
+    "require": {
+        "ext-bcmath": "*",
+        "illuminate/support": "~6|~7|~8",
+        "hedii/laravel-gelf-logger": "^4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.0",
+        "orchestra/testbench": "~5|~6"
+    },
+    "autoload": {
+        "psr-4": {
+            "LeandroSe\\LaravelGelfLogging\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LeandroSe\\LaravelGelfLogging\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LeandroSe\\LaravelGelfLogging\\LaravelGelfLoggingServiceProvider"
+            ],
+            "aliases": {
+                "LaravelGelfLogging": "LeandroSe\\LaravelGelfLogging\\Facades\\LaravelGelfLogging"
+            }
+        }
+    }
+}
